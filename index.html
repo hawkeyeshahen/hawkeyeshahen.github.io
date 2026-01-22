@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Cornos World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="hawkeye shahen">
+<meta name="description" content="welcome to cornos">
+<meta name="keywords" content="cornos world, chornos, kornos, كورنوس">
+
+<style>
+    /* ====== الخلفية والنص ====== */
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background-image: url("CHORNOS.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* الحاوية المركزية */
+    .center-container {
+        text-align: center;
+        background-color: rgba(0,0,0,0.5);
+        padding: 30px 20px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    h1 {
+        margin: 10px 0;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    /* ====== الأزرار ====== */
+    .options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .options button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #ff0d05;
+        transition: 0.3s;
+    }
+
+    .options button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ====== الأقسام ====== */
+    .fullscreen-section {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 30px;
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: rgba(0,0,0,0.95);
+    }
+
+    .fullscreen-section.active {
+        display: flex;
+    }
+
+    .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: rgba(49,48,49,0.95);
+        color: #d5fa07;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    .back-button:hover {
+        background-color: rgba(15,253,6,0.4);
+    }
+
+    /* ====== صناديق المحتوى ====== */
+    .content-box {
+        background-color: rgba(50, 100, 98, 0.95);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* النصوص الطويلة والتمرير */
+    .content-box pre {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        white-space: pre-wrap; 
+        word-wrap: break-word;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    /* أزرار الكودات داخل قسم الكودات */
+    .codes-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    /* ====== استجابة الأجهزة ====== */
+    @media (max-width: 768px) {
+        h1 { font-size: 24px; }
+        p { font-size: 16px; }
+        .options button, .codes-buttons button { font-size: 14px; padding: 10px 15px; }
+        .content-box pre { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+        h1 { font-size: 20px; }
+        p { font-size: 14px; }
+        .options button, .codes-buttons button { font-size: 12px; padding: 8px 12px; }
+        .content-box pre { font-size: 12px; }
+    }
+</style>
+</head>
+
+<body>
+<div class="center-container">
+    <h1>CORNOS</h1>
+    <h1>HAWKEYE SHAHEN</h1>
+    <p>Welcome to Cornos - The Devil of the World</p>
+
+    <!-- الأزرار الخاصة بالخيارات -->
+    <div class="options">
+        <button onclick="openFull('tools-full')">الأدوات</button>
+        <button onclick="openFull('images-full')">الصور</button>
+        <button onclick="openFull('codes-full')">الكودات</button>
+        <button onclick="openFull('rules-full')">القواعد</button>
+        <button onclick="openFull('accounts-full')">الحسابات</button>
+    </div>
+</div>
+
+<!-- الأقسام الكاملة -->
+
+<div id="tools-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('tools-full')">⬅ العودة</button>
+    <h2>الأدوات</h2>
+    <div class="content-box">
+        <pre>هنا يمكنك وضع الأدوات الخاصة بك</pre>
+    </div>
+</div>
+
+<div id="images-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('images-full')">⬅ العودة</button>
+    <h2>الصور</h2>
+    <div class="content-box">
+        <pre>هنا يمكنك عرض الصور الخاصة بالموقع</pre>
+    </div>
+</div>
+
+<!-- ===== قسم الكودات المتطور ===== -->
+<div id="codes-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('codes-full')">⬅ العودة</button>
+    <h2>الكودات</h2>
+
+    <div class="content-box">
+        <pre id="codes-pre" style="color:#00ff00;"></pre> <!-- لون الكود -->
+        <p id="code-description" style="margin-top:10px; font-weight:bold; color:#ffd700;"></p> <!-- لون الوصف -->
+    </div>
+
+    <div class="codes-buttons">
+        <!-- مثال على 10 ملفات كود -->
+        <button onclick="loadCode('codes/code1.txt', 'ثغره تغيير اسمك بالفيس بوك', '#00ff00', '#ffd700')">الكود 1</button>
+        <button onclick="loadCode('codes/code2.txt', 'وصف الكود 2', '#00ff00', '#ffd700')">الكود 2</button>
+        <button onclick="loadCode('codes/code3.txt', 'وصف الكود 3', '#00ff00', '#ffd700')">الكود 3</button>
+        <button onclick="loadCode('codes/code4.txt', 'وصف الكود 4', '#00ff00', '#ffd700')">الكود 4</button>
+        <button onclick="loadCode('codes/code5.txt', 'وصف الكود 5', '#00ff00', '#ffd700')">الكود 5</button>
+        <button onclick="loadCode('codes/code6.txt', 'وصف الكود 6', '#00ff00', '#ffd700')">الكود 6</button>
+        <button onclick="loadCode('codes/code7.txt', 'وصف الكود 7', '#00ff00', '#ffd700')">الكود 7</button>
+        <button onclick="loadCode('codes/code8.txt', 'وصف الكود 8', '#00ff00', '#ffd700')">الكود 8</button>
+        <button onclick="loadCode('codes/code9.txt', 'وصف الكود 9', '#00ff00', '#ffd700')">الكود 9</button>
+        <button onclick="loadCode('codes/code10.txt', 'وصف الكود 10', '#00ff00', '#ffd700')">الكود 10</button>
+    </div>
+</div>
+
+<div id="rules-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('rules-full')">⬅ العودة</button>
+    <h2>القواعد</h2>
+    <div class="content-box">
+        <pre>هنا يمكنك وضع القواعد والتعليمات الخاصة بالموقع</pre>
+    </div>
+</div>
+
+<div id="accounts-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('accounts-full')">⬅ العودة</button>
+    <h2>الحسابات</h2>
+    <div class="content-box">
+        <pre>هنا يمكنك عرض الحسابات والمعلومات الخاصة بها</pre>
+    </div>
+</div>
+
+<script>
+    function openFull(id) {
+        document.getElementById(id).classList.add('active');
+    }
+
+    function closeFull(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    // ===== تحميل الكود مع التحكم بالوصف والألوان =====
+    function loadCode(filePath, description, codeColor, descColor) {
+        fetch(filePath)
+        .then(response => response.text())
+        .then(data => {
+            const codePre = document.getElementById('codes-pre');
+            const codeDesc = document.getElementById('code-description');
+
+            codePre.textContent = data; // يعرض الكود
+            codePre.style.color = codeColor; // لون الكود
+
+            codeDesc.textContent = description; // يعرض الوصف
+            codeDesc.style.color = descColor; // لون الوصف
+        })
+        .catch(err => {
+            document.getElementById('codes-pre').textContent = "حدث خطأ في تحميل الكود";
+            document.getElementById('code-description').textContent = "";
+            console.error(err);
+        });
+    }
+</script>
+</body>
+</html>
