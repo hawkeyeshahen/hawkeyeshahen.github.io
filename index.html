@@ -117,6 +117,105 @@ p { font-size: 18px; margin-bottom: 20px; }
     }
 }
 
+/* ================= قسم الصور ================= */
+.images-container {
+    display: grid;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* الكمبيوتر: 6 أعمدة */
+@media (min-width: 768px) {
+    .images-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* الهاتف: 4 أعمدة */
+@media (max-width: 767px) {
+    .images-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* البطاقة لكل صورة */
+.image-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3; /* الحفاظ على شكل مربع مستطيل متناسق */
+    background-color: black; /* الجزء الظاهر المشوش */
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+/* النص داخل الصورة */
+.image-card span {
+    color: #fff;       /* لون الكلام */
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5); /* خلفية نصف شفافة */
+}
+
+/* الجزء الظاهر مشوش */
+.image-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(6px); /* مقدار التشويش */
+    z-index: 0;
+}
+
+/* الصورة الحقيقية خلف المشوش */
+.image-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* اجعلها أقل وضوحا */
+    z-index: -1;
+}
+
+/* نص الصورة فوق المشوش */
+.image-card .image-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= قسم القواعد ================= */
+.rules-content {
+    width: 100%;
+    max-width: 900px;
+    background-color: rgba(15, 15, 15, 0.95);
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid #ff0000;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+    max-height: 65vh;
+    overflow-y: auto;
+    color: #ff0800;
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: right;
+}
+
+/* شريط تمرير للقواعد */
+.rules-content::-webkit-scrollbar { width: 8px; }
+.rules-content::-webkit-scrollbar-track { background: rgba(244, 248, 4, 0.05); }
+.rules-content::-webkit-scrollbar-thumb { background-color: rgb(250, 13, 5); border-radius: 4px; }
+
 /* ================= قسم الكودات ================= */
 .content-box {
     background-color: rgba(10, 10, 10, 0.95);
@@ -185,29 +284,6 @@ p { font-size: 18px; margin-bottom: 20px; }
     color: #00ff00;
 }
 
-/* ================= قسم القواعد ================= */
-.rules-content {
-    width: 100%;
-    max-width: 900px;
-    background-color: rgba(15, 15, 15, 0.95);
-    padding: 20px;
-    margin-top: 20px;
-    border: 2px solid #ff0000;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
-    max-height: 65vh;
-    overflow-y: auto;
-    color: #ff0800;
-    font-size: 16px;
-    line-height: 1.9;
-    text-align: right;
-}
-
-/* شريط تمرير للقواعد */
-.rules-content::-webkit-scrollbar { width: 8px; }
-.rules-content::-webkit-scrollbar-track { background: rgba(244, 248, 4, 0.05); }
-.rules-content::-webkit-scrollbar-thumb { background-color: rgb(250, 13, 5); border-radius: 4px; }
-
 /* ================= تحسين الهاتف ================= */
 @media (max-width: 767px) {
     h1 { font-size: 7vw; }
@@ -245,6 +321,31 @@ p { font-size: 18px; margin-bottom: 20px; }
         <button onclick="openFull('codes-full')">الكودات</button>
         <button onclick="openFull('rules-full')">القواعد</button>
         <button onclick="openFull('accounts-full')">الحسابات</button>
+    </div>
+</div>
+
+<!-- ================= قسم الصور ================= -->
+<div id="images-full" class="fullscreen-section">
+    <button class="back-button" onclick="closeFull('images-full')">⬅ العودة</button>
+    <h2>الصور</h2>
+    <div class="images-container">
+        <!-- مثال على الصور -->
+
+
+        
+        <div class="image-card" data-password="1234" style="background-color: rgba(0,0,0,0.8);">
+            <img src="example1.jpg" alt="صورة 1">
+            <span class="image-text">شرح الصورة 1</span>
+        </div>
+
+
+
+
+        <div class="image-card" data-password="5678" style="background-color: rgba(10,10,10,0.8);">
+            <img src="example2.jpg" alt="صورة 2">
+            <span class="image-text">شرح الصورة 2</span>
+        </div>
+        <!-- أضف المزيد بنفس الطريقة -->
     </div>
 </div>
 
@@ -312,6 +413,7 @@ p { font-size: 18px; margin-bottom: 20px; }
         <button onclick="loadCode('code29')">الكود 29</button>
         <button onclick="loadCode('code30')">الكود 30</button>
     </div>
+
 </div>
 
 <script>
@@ -336,6 +438,21 @@ function copyCode() {
         alert("حدث خطأ أثناء النسخ.");
     });
 }
+
+/* ================= حماية الصور بكلمة سر ================= */
+document.querySelectorAll('.image-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const password = card.getAttribute('data-password'); // كلمة السر لكل صورة
+        const userPass = prompt("أدخل كلمة السر لفتح الصورة:");
+        if(userPass === password) {
+            alert("تم التحقق! يمكنك الآن عرض الصورة بالكامل.");
+            // هنا يمكنك إضافة فتح الصورة كاملة أو رابط تحميل
+        } else {
+            alert("كلمة السر خاطئة!");
+        }
+    });
+});
+
 
 
 
