@@ -88,7 +88,7 @@ p { font-size: 18px; margin-bottom: 20px; }
 
 .fullscreen-section.active { display: flex; }
 
-/* زر الرجوع للجميع */
+/* ================= زر الرجوع ================= */
 .back-button {
     position: fixed;
     top: 20px;
@@ -105,6 +105,17 @@ p { font-size: 18px; margin-bottom: 20px; }
 }
 
 .back-button:hover { background-color: rgba(255,255,255,0.2); }
+
+/* ================= تحسين زر العودة على الهاتف ================= */
+@media (max-width: 767px) {
+    .back-button {
+        top: 4px;
+        left: 4px;
+        padding: 4px 8px;
+        font-size: 3.5vw;
+        border-radius: 6px;
+    }
+}
 
 /* ================= قسم الكودات ================= */
 .content-box {
@@ -192,7 +203,7 @@ p { font-size: 18px; margin-bottom: 20px; }
     text-align: right;
 }
 
-/* شريط تمرير أنيق للقواعد */
+/* شريط تمرير للقواعد */
 .rules-content::-webkit-scrollbar { width: 8px; }
 .rules-content::-webkit-scrollbar-track { background: rgba(244, 248, 4, 0.05); }
 .rules-content::-webkit-scrollbar-thumb { background-color: rgb(250, 13, 5); border-radius: 4px; }
@@ -301,7 +312,6 @@ p { font-size: 18px; margin-bottom: 20px; }
         <button onclick="loadCode('code29')">الكود 29</button>
         <button onclick="loadCode('code30')">الكود 30</button>
     </div>
-
 </div>
 
 <script>
@@ -327,7 +337,8 @@ function copyCode() {
     });
 }
 
-    
+
+
 
     /* ====== مكان كتابة المحتوى + الشرح + الألوان ====== */
     const codesData = {
